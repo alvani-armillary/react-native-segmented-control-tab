@@ -37,6 +37,7 @@ type Props = {
   accessibilityLabel?: string,
   testID?: string;
   enabled?: boolean,
+  rightComponent?: any,
 }
 
 const styles = StyleSheet.create({
@@ -128,6 +129,7 @@ export default class TabOption extends PureComponent<Props> {
       accessibilityLabel,
       testID,
       enabled,
+      rightComponent,
     } = this.props
     return (
       <TouchableOpacity
@@ -147,7 +149,7 @@ export default class TabOption extends PureComponent<Props> {
         disabled={!enabled}
         activeOpacity={activeTabOpacity}
       >
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', minHeight: 20 }}>
           <Text
             style={[
               styles.tabTextStyle,
@@ -189,6 +191,7 @@ export default class TabOption extends PureComponent<Props> {
               </Text>
             </View>
           )}
+          {rightComponent}
         </View>
       </TouchableOpacity>
     )

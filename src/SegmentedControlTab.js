@@ -38,6 +38,7 @@ type Props = {
   borderRadius: number,
   accessibilityLabels: string[],
   testIDs: string[],
+  rightComponents: any[],
 }
 
 const styles = StyleSheet.create({
@@ -118,6 +119,7 @@ export default class SegmentedControlTab extends PureComponent<Props> {
     allowFontScaling: true,
     activeTabOpacity: 1,
     enabled: true,
+    rightComponents: [undefined, undefined, undefined],
   };
 
 
@@ -149,6 +151,7 @@ export default class SegmentedControlTab extends PureComponent<Props> {
       testIDs,
       activeTabOpacity,
       enabled,
+      rightComponents,
     } = this.props
     const firstTabStyleDefault = [
       {
@@ -185,6 +188,7 @@ export default class SegmentedControlTab extends PureComponent<Props> {
               key={item}
               index={index}
               badge={badges && badges[index] ? badges[index] : false}
+              rightComponent={rightComponents && rightComponents[index]}
               isTabActive={
                 multiple
                   ? selectedIndices.includes(index)
